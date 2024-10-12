@@ -4,7 +4,8 @@
 
 using namespace std;
 
-int countOccurances(int arr[], int size, int n);
+//Fixed spelling error
+int countOccurrences(int arr[], int size, int n);
 void sortArray(int arr[], int size);
 
 int main() {
@@ -17,6 +18,7 @@ int main() {
     cin >> size;
     cout << "Enter array elements: " << endl;
 
+    // Take in numbers for each array element until reaching the size of the array
     for (int i = 0; i < size; i++) {
         cin >> arr[i];
     }
@@ -24,20 +26,27 @@ int main() {
     sortArray(arr,size);
 
     cout << left << setw(10) << "Number" << setw(10) << "Count" << endl;
-    for (int i = 0; i < size; i++) {
 
+    // Count and print occurrences of each number
+    for (int i = 0; i < size; i++) {
+        // If it's the first element or an element that isn't the same as the previous one, count number of occurrences
+        if (i==0||arr[i] != arr[i-1]){ 
+            int count = countOccurrences(arr, size, arr[i]);
+            cout << left << setw(10) << arr[i] << setw(10) << count << endl;
+        }
     }
+
 
     return 0;
 }
 
-int countOccurences(int *arr, int size, int n) {
+int countOccurrences(int *arr, int size, int n) {
+    //If the integer is equal to the ith element in array increment the count.
     int count = 0;
     for(int i = 0; i < size; i++) {
         if(arr[i] == n){
             count++;
         }
-        i++;
     }
     return count;
 }
